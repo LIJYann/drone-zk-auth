@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>低空无人飞行器零知识身份认证 — 融资路演</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===========================================
+   VIEWPORT FITTING: MANDATORY BASE STYLES
+   =========================================== */
+
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.slide {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.slide-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 100%;
+    overflow: hidden;
+    padding: var(--slide-padding);
+}
+
+:root {
+    --title-size: clamp(1.5rem, 5vw, 4rem);
+    --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+    --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+    --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
+    --small-size: clamp(0.65rem, 1vw, 0.875rem);
+
+    --slide-padding: clamp(1rem, 4vw, 4rem);
+    --content-gap: clamp(0.5rem, 2vw, 2rem);
+    --element-gap: clamp(0.25rem, 1vw, 1rem);
+}
+
+.card, .container, .content-box {
+    max-width: min(90vw, 1000px);
+    max-height: min(80vh, 700px);
+}
+
+.feature-list, .bullet-list {
+    gap: clamp(0.4rem, 1vh, 1rem);
+}
+
+.feature-list li, .bullet-list li {
+    font-size: var(--body-size);
+    line-height: 1.4;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+img, .image-container {
+    max-width: 100%;
+    max-height: min(50vh, 400px);
+    object-fit: contain;
+}
+
+@media (max-height: 700px) {
+    :root {
+        --slide-padding: clamp(0.75rem, 3vw, 2rem);
+        --content-gap: clamp(0.4rem, 1.5vw, 1rem);
+        --title-size: clamp(1.25rem, 4.5vw, 2.5rem);
+        --h2-size: clamp(1rem, 3vw, 1.75rem);
+    }
+}
+
+@media (max-height: 600px) {
+    :root {
+        --slide-padding: clamp(0.5rem, 2.5vw, 1.5rem);
+        --content-gap: clamp(0.3rem, 1vw, 0.75rem);
+        --title-size: clamp(1.1rem, 4vw, 2rem);
+        --body-size: clamp(0.7rem, 1.2vw, 0.95rem);
+    }
+
+    .nav-dots, .keyboard-hint, .decorative {
+        display: none;
+    }
+}
+
+@media (max-height: 500px) {
+    :root {
+        --slide-padding: clamp(0.4rem, 2vw, 1rem);
+        --title-size: clamp(1rem, 3.5vw, 1.5rem);
+        --h2-size: clamp(0.9rem, 2.5vw, 1.25rem);
+        --body-size: clamp(0.65rem, 1vw, 0.85rem);
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --title-size: clamp(1.25rem, 7vw, 2.5rem);
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* ===========================================
+   THEME: DARK SIGNAL — Professional Tech Pitch
+   =========================================== */
+
+:root {
+    --bg-deep: #0a0e17;
+    --bg-primary: #111827;
+    --bg-card: #1a2030;
+    --bg-card-hover: #1f2a3a;
+    --text-primary: #e8ecf2;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --accent: #00c6ff;
+    --accent-glow: rgba(0, 198, 255, 0.25);
+    --accent2: #f59e0b;
+    --accent2-glow: rgba(245, 158, 11, 0.2);
+    --danger: #ef4444;
+    --danger-glow: rgba(239, 68, 68, 0.2);
+    --success: #10b981;
+    --border: rgba(255,255,255,0.06);
+    --border-active: rgba(0, 198, 255, 0.3);
+    --font-display: 'Archivo Black', 'Noto Sans SC', sans-serif;
+    --font-body: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Background mesh */
+.bg-mesh {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(ellipse 1200px 800px at 20% 20%, rgba(0,198,255,0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 1000px 700px at 80% 80%, rgba(245,158,11,0.03) 0%, transparent 70%),
+        radial-gradient(ellipse 800px 600px at 50% 50%, rgba(0,198,255,0.02) 0%, transparent 60%);
+}
+
+/* Slide wrapper */
+.slide {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+}
+
+/* Grid lines */
+.slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.slide-content { position: relative; z-index: 2; }
+
+/* Typography */
+h1 {
+    font-family: var(--font-display);
+    font-size: var(--title-size);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #c8d6e5 50%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+h2 {
+    font-family: var(--font-display);
+    font-size: var(--h2-size);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+}
+
+h3 {
+    font-family: var(--font-body);
+    font-size: var(--h3-size);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.subtitle {
+    font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+    color: var(--text-secondary);
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.35em 0.9em;
+    border-radius: 100px;
+    font-size: var(--small-size);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.tag-accent {
+    background: rgba(0,198,255,0.12);
+    border: 1px solid rgba(0,198,255,0.3);
+    color: var(--accent);
+}
+
+.tag-warning {
+    background: rgba(245,158,11,0.12);
+    border: 1px solid rgba(245,158,11,0.3);
+    color: var(--accent2);
+}
+
+.tag-danger {
+    background: rgba(239,68,68,0.12);
+    border: 1px solid rgba(239,68,68,0.3);
+    color: var(--danger);
+}
+
+.tag-success {
+    background: rgba(16,185,129,0.12);
+    border: 1px solid rgba(16,185,129,0.3);
+    color: var(--success);
+}
+
+/* Cards */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: clamp(8px, 1vw, 16px);
+    padding: clamp(1rem, 2.5vw, 2rem);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    border-color: var(--border-active);
+    box-shadow: 0 0 30px var(--accent-glow);
+}
+
+.card-accent {
+    border-left: 3px solid var(--accent);
+}
+
+.card-warning {
+    border-left: 3px solid var(--accent2);
+}
+
+.card-danger {
+    border-left: 3px solid var(--danger);
+}
+
+/* Stat number */
+.stat-num {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1;
+    background: linear-gradient(135deg, var(--accent), #60d0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-size: var(--small-size);
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+}
+
+/* Divider */
+.divider {
+    width: clamp(40px, 6vw, 80px);
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin: var(--element-gap) 0;
+}
+
+.divider-gold {
+    background: var(--accent2);
+}
+
+/* Section label */
+.section-label {
+    font-size: var(--small-size);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--element-gap);
+}
+
+/* Architecture diagram */
+.arch-layer {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 2vw, 1.5rem);
+    padding: clamp(0.4rem, 1.5vw, 0.8rem) clamp(0.6rem, 2vw, 1.2rem);
+    border-radius: clamp(4px, 0.8vw, 10px);
+    font-size: var(--body-size);
+    font-weight: 500;
+}
+
+.arch-layer-top {
+    background: rgba(0,198,255,0.08);
+    border: 1px solid rgba(0,198,255,0.2);
+    color: var(--accent);
+}
+
+.arch-layer-mid {
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.2);
+    color: var(--accent2);
+}
+
+.arch-layer-low {
+    background: rgba(16,185,129,0.08);
+    border: 1px solid rgba(16,185,129,0.2);
+    color: var(--success);
+}
+
+.arch-arrow {
+    color: var(--text-muted);
+    font-size: clamp(0.8rem, 1.2vw, 1.2rem);
+    text-align: center;
+}
+
+/* Flow diagram */
+.flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.3rem, 1vw, 0.8rem);
+    flex-wrap: wrap;
+}
+
+.flow-node {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: clamp(6px, 0.8vw, 12px);
+    padding: clamp(0.5rem, 1.5vw, 1rem) clamp(0.8rem, 2vw, 1.5rem);
+    font-size: var(--body-size);
+    text-align: center;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.flow-node.active {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.flow-arrow {
+    color: var(--accent);
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    font-weight: 700;
+}
+
+/* Number badge */
+.num-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(32px, 4vw, 48px);
+    height: clamp(32px, 4vw, 48px);
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 2px solid var(--accent);
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+/* Threat card icon */
+.threat-icon {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: 0.5rem;
+}
+
+/* Navigation */
+.nav-dots {
+    position: fixed;
+    right: clamp(12px, 2vw, 24px);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+}
+
+.nav-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.nav-dot:hover, .nav-dot.active {
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.slide-counter {
+    position: fixed;
+    bottom: clamp(16px, 3vh, 32px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--small-size);
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    z-index: 100;
+}
+
+.slide-counter span { color: var(--accent); font-weight: 600; }
+
+.keyboard-hint {
+    position: fixed;
+    bottom: clamp(16px, 3vh, 32px);
+    right: clamp(16px, 3vw, 32px);
+    font-size: var(--small-size);
+    color: var(--text-muted);
+    z-index: 100;
+}
+
+/* Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Pulse ring */
+.pulse-ring {
+    position: absolute;
+    width: clamp(100px, 20vw, 200px);
+    height: clamp(100px, 20vw, 200px);
+    border-radius: 50%;
+    border: 1px solid rgba(0,198,255,0.15);
+    animation: pulse 3s ease-out infinite;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* Compare table */
+.compare-row {
+    display: flex;
+    align-items: center;
+    gap: var(--element-gap);
+}
+
+.compare-old, .compare-new {
+    flex: 1;
+    padding: clamp(0.8rem, 2vw, 1.5rem);
+    border-radius: clamp(6px, 1vw, 12px);
+    text-align: center;
+}
+
+.compare-old {
+    background: rgba(239,68,68,0.06);
+    border: 1px solid rgba(239,68,68,0.2);
+}
+
+.compare-new {
+    background: rgba(0,198,255,0.06);
+    border: 1px solid rgba(0,198,255,0.2);
+}
+
+.compare-arrow-icon {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+/* Responsive grid overrides */
+@media (max-width: 768px) {
+    .flow-row { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+}
+
+/* Selection */
+::selection {
+    background: rgba(0,198,255,0.3);
+    color: #fff;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+
+<!-- Slide 0: Cover -->
+<section class="slide" id="s0">
+    <div class="slide-content" style="align-items: center; text-align: center; gap: var(--content-gap);">
+        <div class="pulse-ring" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+        <div class="reveal" style="margin-bottom: 0;">
+            <span class="tag tag-accent" style="margin-bottom: var(--element-gap);">低空经济 · 安全基础设施</span>
+        </div>
+        <h1 class="reveal reveal-delay-1" style="max-width: 900px;">
+            低空无人飞行器<br>零知识身份认证系统
+        </h1>
+        <p class="subtitle reveal reveal-delay-2" style="max-width: 650px;">
+            在不影响现行国标的前提下，将明文身份广播<br>升级为零知识动态合法性证明
+        </p>
+        <div class="divider reveal reveal-delay-3" style="margin: var(--content-gap) auto;"></div>
+        <p class="reveal reveal-delay-4" style="font-size: var(--small-size); color: var(--text-muted);">
+            2026年5月 &nbsp;|&nbsp; 上海交通大学 &nbsp;|&nbsp; 蔚蓝空间 &nbsp;|&nbsp; 中国联通 &nbsp;|&nbsp; 中国传媒大学
+        </p>
+    </div>
+</section>
+
+<!-- Slide 1: Macro Background -->
+<section class="slide" id="s1">
+    <div class="slide-content" style="gap: var(--content-gap);">
+        <div class="section-label reveal">01 · 行业背景</div>
+        <h2 class="reveal reveal-delay-1">低空经济：万亿级赛道的基础设施刚需</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(3, 1fr); max-width: 900px; width: 100%;">
+            <div class="card" style="text-align: center;">
+                <div class="stat-num">3.5<span style="font-size: 0.5em;">万亿</span></div>
+                <div class="stat-label">2025年中国低空经济规模</div>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div class="stat-num">270<span style="font-size: 0.5em;">万架</span></div>
+                <div class="stat-label">注册无人机保有量</div>
+            </div>
+            <div class="card" style="text-align: center;">
+                <div class="stat-num">1<span style="font-size: 0.5em;">秒</span></div>
+                <div class="stat-label">国标强制身份广播间隔</div>
+            </div>
+        </div>
+        <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: var(--text-secondary); max-width: 800px;">
+            GB 46750-2025《民用无人驾驶航空器系统运行识别规范》要求每架无人机在飞行全程中，
+            以不低于每秒1次的频率，通过Wi-Fi/蓝牙公开广播唯一身份标识和运行信息。
+            这意味着全国每天将产生超过 <strong style="color: var(--accent);">200亿条</strong> 公开广播的身份报文。
+        </p>
+    </div>
+</section>
+
+<!-- Slide 2: The Problem -->
+<section class="slide" id="s2">
+    <div class="slide-content" style="gap: var(--content-gap);">
+        <div class="section-label reveal">02 · 核心矛盾</div>
+        <h2 class="reveal reveal-delay-1">明文广播的困境：安全与监管的两难</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <div class="card card-warning reveal reveal-delay-3" style="max-width: 850px; width: 100%; align-self: center;">
+            <p style="font-size: var(--h3-size); font-weight: 600; color: var(--accent2); margin-bottom: 0.5rem;">
+                ⚠ 矛盾的本质
+            </p>
+            <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.7;">
+                广播式运行识别的问题不是单纯的通信保密问题，而是在<br>
+                <strong style="color: #fff;">强制广播、持续发送、高频更新（1 Hz）</strong>的刚性约束下，<br>
+                如何既让监管节点验证飞行器合法性，又防止真实身份被监听、复制和复用。
+            </p>
+        </div>
+        <div class="grid reveal reveal-delay-4" style="grid-template-columns: repeat(2, 1fr); max-width: 850px; width: 100%; align-self: center;">
+            <div class="card card-accent">
+                <p style="font-weight: 600; color: var(--accent); margin-bottom: 0.35rem;">国标要求（不可回避）</p>
+                <ul class="bullet-list" style="list-style: none; padding: 0; color: var(--text-secondary);">
+                    <li>· 双模识别（广播式 + 网络式）</li>
+                    <li>· 23个字段明文播报</li>
+                    <li>· 每秒1次持续发送</li>
+                    <li>· 开放频段公开可接收</li>
+                </ul>
+            </div>
+            <div class="card card-danger">
+                <p style="font-weight: 600; color: var(--danger); margin-bottom: 0.35rem;">安全风险（无法忽视）</p>
+                <ul class="bullet-list" style="list-style: none; padding: 0; color: var(--text-secondary);">
+                    <li>· 身份窃取与套牌飞行器</li>
+                    <li>· 重放攻击与伪造报文</li>
+                    <li>· 长期运行轨迹画像</li>
+                    <li>· 敏感任务属性暴露</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 3: Three Threats -->
+<section class="slide" id="s3">
+    <div class="slide-content" style="gap: var(--content-gap);">
+        <div class="section-label reveal">03 · 威胁场景</div>
+        <h2 class="reveal reveal-delay-1">明文广播导致的三类安全威胁</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(3, 1fr); max-width: 950px; width: 100%; align-self: center;">
+            <div class="card card-danger" style="text-align: center;">
+                <div class="threat-icon">🎭</div>
+                <h3 style="color: var(--danger); margin-bottom: 0.5rem;">套牌飞行器</h3>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    攻击者被动监听开放频段，提取合法无人机的唯一识别码和实名登记标志，写入非法飞行器后伪装合法身份侵入航路。
+                </p>
+                <span class="tag tag-danger" style="margin-top: 0.8rem;">身份克隆</span>
+            </div>
+            <div class="card card-warning" style="text-align: center;">
+                <div class="threat-icon">📡</div>
+                <h3 style="color: var(--accent2); margin-bottom: 0.5rem;">重放攻击</h3>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    合法广播报文被录制后在其他时间或区域原样重放，监管节点无法区分"当前真实飞行器"和"历史报文回放"。
+                </p>
+                <span class="tag tag-warning" style="margin-top: 0.8rem;">报文伪造</span>
+            </div>
+            <div class="card card-accent" style="text-align: center;">
+                <div class="threat-icon">🔍</div>
+                <h3 style="color: var(--accent); margin-bottom: 0.5rem;">长期画像</h3>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    网络式识别每秒上传明文身份属性，一旦监管平台被攻破，攻击者可关联所有历史数据，形成飞行器全生命周期运行画像。
+                </p>
+                <span class="tag tag-accent" style="margin-top: 0.8rem;">隐私泄露</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 4: Paradigm Shift -->
+<section class="slide" id="s4">
+    <div class="slide-content" style="gap: var(--content-gap); align-items: center; text-align: center;">
+        <div class="section-label reveal">04 · 范式转换</div>
+        <h2 class="reveal reveal-delay-1">核心思路：从"广播身份"到"广播证明"</h2>
+        <div class="divider reveal reveal-delay-2" style="margin: var(--content-gap) auto;"></div>
+        <div class="compare-row reveal reveal-delay-3" style="max-width: 850px; width: 100%;">
+            <div class="compare-old">
+                <p style="font-weight: 700; color: var(--danger); margin-bottom: 0.5rem;">现行方案</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary);">
+                    持续广播明文身份字段<br>
+                    <span style="color: var(--danger);">→ 谁都可以读，谁都可以复制</span>
+                </p>
+                <div style="margin-top: 0.8rem; padding: 0.5rem; background: rgba(239,68,68,0.08); border-radius: 6px; font-size: var(--small-size); color: var(--text-muted);">
+                    唯一识别码<br>实名登记标志<br>运行类别<br>飞行器分类<br>位置坐标
+                </div>
+            </div>
+            <div class="compare-arrow-icon">→</div>
+            <div class="compare-new">
+                <p style="font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">零知识方案</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary);">
+                    广播短时有效的动态认证标签<br>
+                    <span style="color: var(--accent);">→ 可验证合法性，但不可复制身份</span>
+                </p>
+                <div style="margin-top: 0.8rem; padding: 0.5rem; background: rgba(0,198,255,0.08); border-radius: 6px; font-size: var(--small-size); color: var(--text-muted);">
+                    "已实名登记" ✓<br>"运行类别合规" ✓<br>"凭据未撤销" ✓<br>"时间窗内有效" ✓<br>← 身份原文不暴露
+                </div>
+            </div>
+        </div>
+        <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: var(--text-secondary); max-width: 700px;">
+            将无人机的<strong style="color: #fff;">身份声明</strong>替换为<strong style="color: var(--accent);">零知识合法性断言</strong>：
+            广播的不再是"我是谁"，而是"我是合法的"这一可验证的事实。
+        </p>
+    </div>
+</section>
+
+<!-- Slide 5: Architecture Overview -->
+<section class="slide" id="s5">
+    <div class="slide-content" style="gap: var(--content-gap);">
+        <div class="section-label reveal">05 · 系统架构</div>
+        <h2 class="reveal reveal-delay-1">四层技术架构总览</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <div class="reveal reveal-delay-3" style="max-width: 850px; width: 100%; align-self: center; display: flex; flex-direction: column; gap: clamp(0.3rem, 0.8vh, 0.6rem);">
+            <div class="arch-layer arch-layer-top">
+                <span style="font-weight: 700; min-width: 90px;">① 监管中心</span>
+                <span style="color: var(--text-muted);">凭据签发 · 撤销列表维护 · 授权追溯</span>
+            </div>
+            <div class="arch-arrow">▼</div>
+            <div class="arch-layer arch-layer-mid">
+                <span style="font-weight: 700; min-width: 90px;">② 机载端</span>
+                <span style="color: var(--text-muted);">安全芯片 · 动态标签生成 · 飞行前凭据预载</span>
+            </div>
+            <div class="arch-arrow">▼</div>
+            <div style="display: flex; gap: clamp(0.3rem, 0.6vw, 0.8rem);">
+                <div class="arch-layer arch-layer-low" style="flex: 1;">
+                    <span style="font-weight: 700; font-size: 0.9em;">③ 广播验证</span>
+                    <span style="font-size: 0.85em; color: var(--text-muted);">快速格式校验<br>时间窗检查<br>重复性检测</span>
+                </div>
+                <div class="arch-layer" style="flex: 1; background: rgba(0,198,255,0.06); border: 1px solid rgba(0,198,255,0.15);">
+                    <span style="font-weight: 700; font-size: 0.9em; color: var(--accent);">④ 网络核验</span>
+                    <span style="font-size: 0.85em; color: var(--text-muted);">完整证明验证<br>套牌/重放判定<br>授权身份追溯</span>
+                </div>
+            </div>
+        </div>
+        <p class="reveal reveal-delay-4" style="font-size: var(--small-size); color: var(--text-muted); max-width: 750px; align-self: center;">
+            ③ ④ 协同工作：广播侧每秒快速筛查 → 发现异常提交网络侧深度核验 → 必要时多授权节点联合解封身份
+        </p>
+    </div>
+</section>
+
+<!-- Slide 6: Anti-spoofing Triple Binding -->
+<section class="slide" id="s6">
+    <div class="slide-content" style="gap: var(--content-gap);">
+        <div class="section-label reveal">06 · 防套牌机制</div>
+        <h2 class="reveal reveal-delay-1">三重动态绑定：让复制即时失效</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(3, 1fr); max-width: 900px; width: 100%; align-self: center;">
+            <div class="card card-accent" style="text-align: center;">
+                <div class="num-badge" style="margin: 0 auto 0.8rem;">1</div>
+                <h3 style="margin-bottom: 0.4rem;">时间绑定</h3>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
+                    认证标签仅在短时间窗内有效，过期自动作废。即使标签被截获，在当前时间窗结束后即无法使用。
+                </p>
+                <span class="tag tag-accent" style="margin-top: 0.6rem;">窗口有效期 ≤ 数秒</span>
+            </div>
+            <div class="card card-warning" style="text-align: center;">
+                <div class="num-badge" style="margin: 0 auto 0.8rem; border-color: var(--accent2); color: var(--accent2);">2</div>
+                <h3 style="margin-bottom: 0.4rem;">区域绑定</h3>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
+                    标签与当前空域网格/监管区域编码绑定。在A区域截获的合法标签在B区域重放时会被自动检测为异常。
+                </p>
+                <span class="tag tag-warning" style="margin-top: 0.6rem;">空域网格编码</span>
+            </div>
+            <div class="card" style="text-align: center; border-left: 3px solid var(--success);">
+                <div class="num-badge" style="margin: 0 auto 0.8rem; border-color: var(--success); color: var(--success);">3</div>
+                <h3 style="margin-bottom: 0.4rem;">硬件绑定</h3>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
+                    证明生成依赖安全芯片/超级SIM中的不可导出密钥。标签无法脱离硬件复制，即使固件被提取也无法伪造。
+                </p>
+                <span class="tag tag-success" style="margin-top: 0.6rem;">安全芯片 · 超级SIM</span>
+            </div>
+        </div>
+        <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: var(--text-secondary); text-align: center; max-width: 750px; align-self: center;">
+            三重绑定共同构成<strong style="color: #fff;">"截获即作废，脱硬即失效，异地即告警"</strong>的防套牌体系
+        </p>
+    </div>
+</section>
+
+<!-- Slide 7: Dual-Mode Coordination -->
+<section class="slide" id="s7">
+    <div class="slide-content" style="gap: var(--content-gap);">
+        <div class="section-label reveal">07 · 双模协同</div>
+        <h2 class="reveal reveal-delay-1">广播快速筛查 + 网络深度核验</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <div class="reveal reveal-delay-3" style="max-width: 850px; width: 100%; align-self: center;">
+            <div class="flow-row" style="margin-bottom: var(--content-gap);">
+                <div class="flow-node active">机载端<br>生成动态标签</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node">Wi-Fi/蓝牙<br>广播标签</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node active">地面边缘<br>快速筛查 ⚡</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node" style="border-color: var(--accent2);">异常？</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node" style="border-color: var(--danger);">网络平台<br>深度核验 🔍</div>
+            </div>
+        </div>
+        <div class="grid reveal reveal-delay-4" style="grid-template-columns: repeat(2, 1fr); max-width: 850px; width: 100%; align-self: center;">
+            <div class="card card-accent">
+                <p style="font-weight: 600; margin-bottom: 0.5rem;">📻 广播侧（轻量级）</p>
+                <ul class="bullet-list" style="list-style: none; padding: 0; color: var(--text-secondary);">
+                    <li>· 报文格式完整性校验</li>
+                    <li>· 时间窗有效性检查</li>
+                    <li>· 同标签重复出现检测</li>
+                    <li>· 区域一致性比对</li>
+                    <li>· 异常标记上送网络平台</li>
+                </ul>
+            </div>
+            <div class="card" style="border-left: 3px solid var(--accent);">
+                <p style="font-weight: 600; margin-bottom: 0.5rem;">🌐 网络侧（完整验证）</p>
+                <ul class="bullet-list" style="list-style: none; padding: 0; color: var(--text-secondary);">
+                    <li>· 完整零知识证明验证</li>
+                    <li>· 凭据撤销列表比对</li>
+                    <li>· 广播-网络标签一致性核验</li>
+                    <li>· 跨区域套牌行为判定</li>
+                    <li>· 多授权节点联合追溯</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 8: Standards Compatibility -->
+<section class="slide" id="s8">
+    <div class="slide-content" style="gap: var(--content-gap);">
+        <div class="section-label reveal">08 · 标准兼容</div>
+        <h2 class="reveal reveal-delay-1">不影响现行国标，无缝嵌入现有框架</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(2, 1fr); max-width: 850px; width: 100%; align-self: center;">
+            <div class="card card-accent" style="text-align: center;">
+                <p style="font-weight: 700; font-size: var(--h3-size); margin-bottom: 0.5rem;">利用扩展字段承载</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    GB 46750-2025 OPID 数据帧预留了扩展字段，认证标签可嵌入现有报文结构，<br>无需修改标准协议。
+                </p>
+                <span class="tag tag-accent" style="margin-top: 0.6rem;">OPID 帧长度 78 字节</span>
+            </div>
+            <div class="card card-accent" style="text-align: center;">
+                <p style="font-weight: 700; font-size: var(--h3-size); margin-bottom: 0.5rem;">1 Hz 实时性可达</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    采用离线预计算+在线轻量更新策略，飞行前预生成时间窗凭据，飞行中每秒仅需<br>哈希级轻量计算。
+                </p>
+                <span class="tag tag-accent" style="margin-top: 0.6rem;">广播间隔 800 ms</span>
+            </div>
+            <div class="card card-accent" style="text-align: center;">
+                <p style="font-weight: 700; font-size: var(--h3-size); margin-bottom: 0.5rem;">不改变广播协议</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    仅替换部分字段内容（从明文身份变为动态标签），不更改<br>Wi-Fi Beacon帧结构和广播频率。
+                </p>
+                <span class="tag tag-accent" style="margin-top: 0.6rem;">完全向下兼容</span>
+            </div>
+            <div class="card card-accent" style="text-align: center;">
+                <p style="font-weight: 700; font-size: var(--h3-size); margin-bottom: 0.5rem;">可追溯不丢监管</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    多授权节点分散持有密钥份额，日常最小披露，异常时<br>联合解封真实身份，满足执法追溯需求。
+                </p>
+                <span class="tag tag-accent" style="margin-top: 0.6rem;">门限恢复机制</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 9: Hardware Foundation -->
+<section class="slide" id="s9">
+    <div class="slide-content" style="gap: var(--content-gap);">
+        <div class="section-label reveal">09 · 硬件基础</div>
+        <h2 class="reveal reveal-delay-1">广播硬件已量产，安全芯片在研</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(2, 1fr); max-width: 900px; width: 100%; align-self: center;">
+            <div class="card" style="border-left: 3px solid var(--success);">
+                <span class="tag tag-success" style="margin-bottom: 0.8rem;">已完成 · V1.0 量产</span>
+                <h3 style="margin-bottom: 0.5rem;">Wi-Fi 广播模块</h3>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    中国传媒大学研发，已支持 GB 46750-2025 全字段封装与 Wi-Fi Beacon 广播。
+                    发送间隔约 800ms，满足 1 Hz 要求，发射功率 ≥ 13 dBm。
+                </p>
+                <p style="font-size: var(--small-size); color: var(--text-muted); margin-top: 0.6rem;">
+                    UART 接口 · 3.3V TTL · 5V USB供电 · 2.4GHz 信道1
+                </p>
+            </div>
+            <div class="card card-accent">
+                <span class="tag tag-accent" style="margin-bottom: 0.8rem;">开发中 · 交大负责</span>
+                <h3 style="margin-bottom: 0.5rem;">ZKP 安全芯片</h3>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    基于安全芯片/超级SIM的不可导出密钥存储方案。
+                    支持飞行前凭据预载、飞行中动态标签生成，关键计算在安全域内执行。
+                </p>
+                <p style="font-size: var(--small-size); color: var(--text-muted); margin-top: 0.6rem;">
+                    哈希运算 · 签名生成 · 密钥隔离 · 防篡改
+                </p>
+            </div>
+        </div>
+        <div class="reveal reveal-delay-4" style="display: flex; flex-direction: column; align-items: center; gap: 0.3rem; margin-top: 0.5rem;">
+            <div style="display: flex; gap: clamp(0.3rem, 1vw, 0.8rem); align-items: center;">
+                <span style="font-size: var(--small-size); color: var(--text-muted);">飞控硬件</span>
+                <span style="color: var(--success);">← 已联调 →</span>
+                <span style="font-size: var(--small-size); color: var(--success); font-weight: 600;">广播式硬件</span>
+                <span style="color: var(--text-muted);">|</span>
+                <span style="font-size: var(--small-size); color: var(--text-muted);">网络式硬件</span>
+                <span style="color: var(--success);">← 已联调 →</span>
+                <span style="font-size: var(--small-size); color: var(--text-muted);">UOM平台</span>
+            </div>
+            <p style="font-size: var(--small-size); color: var(--text-muted);">ZKP 算法层 ← 当前重点攻关</p>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 10: Competitive Moat -->
+<section class="slide" id="s10">
+    <div class="slide-content" style="gap: var(--content-gap);">
+        <div class="section-label reveal">10 · 竞争壁垒</div>
+        <h2 class="reveal reveal-delay-1">三重壁垒构建护城河</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(3, 1fr); max-width: 900px; width: 100%; align-self: center;">
+            <div class="card card-accent" style="text-align: center;">
+                <div style="font-size: clamp(2rem, 3vw, 3rem); margin-bottom: 0.5rem;">🔬</div>
+                <h3 style="margin-bottom: 0.4rem;">技术壁垒</h3>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    轻量级零知识认证协议需同时满足 1 Hz 实时性、报文字段长度约束和广播环境不可靠信道。离线预计算+在线轻量更新的工程化方案难以复制。
+                </p>
+            </div>
+            <div class="card card-warning" style="text-align: center;">
+                <div style="font-size: clamp(2rem, 3vw, 3rem); margin-bottom: 0.5rem;">📋</div>
+                <h3 style="margin-bottom: 0.4rem;">标准壁垒</h3>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    方案紧贴 GB 46750-2025 国标框架设计，利用扩展字段兼容。先发优势一旦进入标准修订建议，后发者只能在我们的框架内竞争。
+                </p>
+            </div>
+            <div class="card" style="text-align: center; border-left: 3px solid var(--success);">
+                <div style="font-size: clamp(2rem, 3vw, 3rem); margin-bottom: 0.5rem;">🔗</div>
+                <h3 style="margin-bottom: 0.4rem;">产业链壁垒</h3>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    已形成"高校算法+企业硬件+运营商网络+公安监管"的完整协作链条。广播模块已量产，网络侧已对接 UOM 平台。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 11: Team -->
+<section class="slide" id="s11">
+    <div class="slide-content" style="gap: var(--content-gap);">
+        <div class="section-label reveal">11 · 团队与合作</div>
+        <h2 class="reveal reveal-delay-1">产学研用闭环，五方协同攻关</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(3, 1fr); max-width: 900px; width: 100%; align-self: center;">
+            <div class="card card-accent" style="text-align: center;">
+                <p style="font-weight: 700; font-size: var(--h3-size);">上海交通大学</p>
+                <p style="color: var(--accent); font-size: var(--small-size); margin-bottom: 0.6rem;">技术核心</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
+                    ZKP 算法设计<br>协议安全证明<br>机载端软硬件整合<br>安全芯片方案
+                </p>
+            </div>
+            <div class="card card-warning" style="text-align: center;">
+                <p style="font-weight: 700; font-size: var(--h3-size);">蔚蓝空间</p>
+                <p style="color: var(--accent2); font-size: var(--small-size); margin-bottom: 0.6rem;">产业落地</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
+                    行业无人机企业<br>真实飞行场景验证<br>机载设备集成测试<br>产品化需求定义
+                </p>
+            </div>
+            <div class="card" style="text-align: center; border-left: 3px solid var(--success);">
+                <p style="font-weight: 700; font-size: var(--h3-size);">中国联通</p>
+                <p style="color: var(--success); font-size: var(--small-size); margin-bottom: 0.6rem;">网络基础设施</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
+                    网络式识别硬件<br>UOM 平台对接<br>基础威胁场景构建<br>运营商级部署能力
+                </p>
+            </div>
+            <div class="card card-accent" style="text-align: center;">
+                <p style="font-weight: 700; font-size: var(--h3-size);">中国传媒大学</p>
+                <p style="color: var(--accent); font-size: var(--small-size); margin-bottom: 0.6rem;">广播硬件</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
+                    Wi-Fi 广播模块研发<br>GB 46750-2025 协议栈<br>硬件量产与测试<br>广播性能优化
+                </p>
+            </div>
+            <div class="card card-danger" style="text-align: center;">
+                <p style="font-weight: 700; font-size: var(--h3-size);">公安部二十三局</p>
+                <p style="color: var(--danger); font-size: var(--small-size); margin-bottom: 0.6rem;">统筹协调</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
+                    项目整体协调<br>监管需求定义<br>标准推动路径<br>执法场景验证
+                </p>
+            </div>
+            <div class="card card-accent" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
+                <p style="font-weight: 700; font-size: var(--h3-size);">+ 更多</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary);">
+                    芯片厂商<br>安全评测机构<br>空域管理机构
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 12: Roadmap & Vision -->
+<section class="slide" id="s12">
+    <div class="slide-content" style="gap: var(--content-gap);">
+        <div class="section-label reveal">12 · 路线图</div>
+        <h2 class="reveal reveal-delay-1">从技术验证到标准推动</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <div class="reveal reveal-delay-3" style="max-width: 900px; width: 100%; align-self: center;">
+            <div style="display: flex; align-items: flex-start; gap: 0; position: relative;">
+                <div style="flex: 1; text-align: center; padding: clamp(0.5rem, 1.5vw, 1rem); position: relative;">
+                    <span class="tag tag-accent" style="margin-bottom: 0.5rem;">Phase 1</span>
+                    <h3 style="margin: 0.4rem 0;">协议设计<br>与仿真验证</h3>
+                    <p style="font-size: var(--small-size); color: var(--text-muted);">2026 H2</p>
+                    <p style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.4rem;">
+                        轻量级认证协议设计<br>安全性质形式化证明<br>仿真环境验证
+                    </p>
+                </div>
+                <div style="color: var(--accent); font-size: 1.5rem; padding-top: 2.5rem;">→</div>
+                <div style="flex: 1; text-align: center; padding: clamp(0.5rem, 1.5vw, 1rem);">
+                    <span class="tag tag-warning" style="margin-bottom: 0.5rem;">Phase 2</span>
+                    <h3 style="margin: 0.4rem 0;">硬件整合<br>与飞行测试</h3>
+                    <p style="font-size: var(--small-size); color: var(--text-muted);">2027 H1</p>
+                    <p style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.4rem;">
+                        安全芯片集成<br>广播模块固件升级<br>真实飞行环境测试
+                    </p>
+                </div>
+                <div style="color: var(--accent); font-size: 1.5rem; padding-top: 2.5rem;">→</div>
+                <div style="flex: 1; text-align: center; padding: clamp(0.5rem, 1.5vw, 1rem);">
+                    <span class="tag tag-success" style="margin-bottom: 0.5rem;">Phase 3</span>
+                    <h3 style="margin: 0.4rem 0;">试点部署<br>与标准推动</h3>
+                    <p style="font-size: var(--small-size); color: var(--text-muted);">2027 H2+</p>
+                    <p style="font-size: var(--body-size); color: var(--text-secondary); margin-top: 0.4rem;">
+                        重点区域试点<br>标准修订建议<br>产业化推广
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card card-accent reveal reveal-delay-4" style="max-width: 750px; width: 100%; align-self: center; text-align: center; margin-top: var(--content-gap);">
+            <p style="font-size: var(--h3-size); font-weight: 700; color: var(--accent); margin-bottom: 0.3rem;">
+                愿景
+            </p>
+            <p style="font-size: var(--body-size); color: var(--text-secondary);">
+                成为低空无人飞行器运行识别的<strong style="color: #fff;">安全基础设施标准</strong>，
+                让每一架合法无人机在不暴露身份的前提下自证合法性。
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Slide 13: Closing -->
+<section class="slide" id="s13">
+    <div class="slide-content" style="align-items: center; text-align: center; gap: var(--content-gap);">
+        <div class="pulse-ring" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+        <h1 class="reveal" style="max-width: 850px;">
+            让天空可信，让身份安全
+        </h1>
+        <p class="subtitle reveal reveal-delay-1" style="max-width: 600px;">
+            不改变现行国标框架，用零知识认证<br>为低空经济补齐最后一道安全防线
+        </p>
+        <div class="divider reveal reveal-delay-2" style="margin: var(--content-gap) auto;"></div>
+        <div class="reveal reveal-delay-3">
+            <p style="font-size: var(--body-size); color: var(--text-secondary); margin-bottom: 0.5rem;">合作联系</p>
+            <p style="font-size: var(--body-size); color: var(--text-muted);">
+                上海交通大学 &nbsp;·&nbsp; 蔚蓝空间 &nbsp;·&nbsp; 中国联通 &nbsp;·&nbsp; 中国传媒大学
+            </p>
+        </div>
+        <p class="reveal reveal-delay-4" style="font-size: var(--small-size); color: var(--text-muted); margin-top: var(--content-gap);">
+            谢谢
+        </p>
+    </div>
+</section>
+
+<!-- Navigation -->
+<nav class="nav-dots" aria-label="幻灯片导航">
+    <button class="nav-dot active" data-slide="0" aria-label="第1页"></button>
+    <button class="nav-dot" data-slide="1" aria-label="第2页"></button>
+    <button class="nav-dot" data-slide="2" aria-label="第3页"></button>
+    <button class="nav-dot" data-slide="3" aria-label="第4页"></button>
+    <button class="nav-dot" data-slide="4" aria-label="第5页"></button>
+    <button class="nav-dot" data-slide="5" aria-label="第6页"></button>
+    <button class="nav-dot" data-slide="6" aria-label="第7页"></button>
+    <button class="nav-dot" data-slide="7" aria-label="第8页"></button>
+    <button class="nav-dot" data-slide="8" aria-label="第9页"></button>
+    <button class="nav-dot" data-slide="9" aria-label="第10页"></button>
+    <button class="nav-dot" data-slide="10" aria-label="第11页"></button>
+    <button class="nav-dot" data-slide="11" aria-label="第12页"></button>
+    <button class="nav-dot" data-slide="12" aria-label="第13页"></button>
+    <button class="nav-dot" data-slide="13" aria-label="第14页"></button>
+</nav>
+
+<div class="slide-counter">
+    <span id="currentSlide">01</span> / <span id="totalSlides">14</span>
+</div>
+<div class="keyboard-hint">← → 或滚轮翻页</div>
+
+<script>
+class Presentation {
+    constructor() {
+        this.slides = document.querySelectorAll('.slide');
+        this.totalSlides = this.slides.length;
+        this.currentIndex = 0;
+        this.isTransitioning = false;
+        this.touchStartY = 0;
+        this.observer = null;
+
+        document.getElementById('totalSlides').textContent = String(this.totalSlides).padStart(2, '0');
+        this.initIntersectionObserver();
+        this.bindEvents();
+        this.updateNav();
+    }
+
+    initIntersectionObserver() {
+        this.observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const idx = Array.from(this.slides).indexOf(entry.target);
+                    if (idx >= 0) {
+                        this.currentIndex = idx;
+                        this.updateNav();
+                    }
+                    entry.target.querySelectorAll('.reveal').forEach(el => {
+                        el.classList.add('visible');
+                    });
+                }
+            });
+        }, {
+            threshold: 0.4,
+            rootMargin: '0px'
+        });
+
+        this.slides.forEach(slide => this.observer.observe(slide));
+    }
+
+    bindEvents() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                this.next();
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                this.prev();
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                this.goTo(0);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                this.goTo(this.totalSlides - 1);
+            }
+        });
+
+        let wheelTimeout;
+        document.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            if (this.isTransitioning) return;
+            if (wheelTimeout) return;
+            wheelTimeout = setTimeout(() => { wheelTimeout = null; }, 800);
+
+            if (e.deltaY > 0) this.next();
+            else if (e.deltaY < 0) this.prev();
+        }, { passive: false });
+
+        document.addEventListener('touchstart', (e) => {
+            this.touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', (e) => {
+            const dy = this.touchStartY - e.changedTouches[0].clientY;
+            if (Math.abs(dy) > 50) {
+                if (dy > 0) this.next();
+                else this.prev();
+            }
+        });
+
+        document.querySelectorAll('.nav-dot').forEach(dot => {
+            dot.addEventListener('click', () => {
+                const idx = parseInt(dot.dataset.slide);
+                this.goTo(idx);
+            });
+        });
+    }
+
+    next() {
+        if (this.currentIndex < this.totalSlides - 1) {
+            this.goTo(this.currentIndex + 1);
+        }
+    }
+
+    prev() {
+        if (this.currentIndex > 0) {
+            this.goTo(this.currentIndex - 1);
+        }
+    }
+
+    goTo(index) {
+        if (this.isTransitioning || index === this.currentIndex) return;
+        if (index < 0 || index >= this.totalSlides) return;
+
+        this.isTransitioning = true;
+        this.slides[index].scrollIntoView({ behavior: 'smooth' });
+        this.currentIndex = index;
+        this.updateNav();
+
+        setTimeout(() => {
+            this.isTransitioning = false;
+        }, 600);
+    }
+
+    updateNav() {
+        document.querySelectorAll('.nav-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === this.currentIndex);
+        });
+        document.getElementById('currentSlide').textContent = String(this.currentIndex + 1).padStart(2, '0');
+    }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    new Presentation();
+});
+</script>
+
+</body>
+</html>
