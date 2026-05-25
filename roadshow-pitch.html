@@ -894,39 +894,39 @@ h3 {
 </section>
 
 <!-- Slide 8: Standards Compatibility -->
-<section class="slide" id="s8" style="font-size: 95%;">
-    <div class="slide-content" style="gap: clamp(0.3rem, 1.2vw, 1.2rem);">
+<section class="slide" id="s8" style="font-size: 90%;">
+    <div class="slide-content" style="gap: clamp(0.2rem, 0.8vw, 0.8rem); padding: clamp(0.5rem, 2.5vw, 2.5rem);">
         <div class="section-label reveal">08 · 标准兼容</div>
         <h2 class="reveal reveal-delay-1">不影响现行国标，无缝嵌入现有框架</h2>
         <div class="divider reveal reveal-delay-2"></div>
         <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(2, 1fr); max-width: 850px; width: 100%; align-self: center;">
-            <div class="card card-accent" style="text-align: center;">
-                <p style="font-weight: 700; font-size: var(--h3-size); margin-bottom: 0.5rem;">利用扩展字段承载</p>
-                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+            <div class="card card-accent" style="text-align: center; padding: clamp(0.5rem, 1.2vw, 1rem);">
+                <p style="font-weight: 700; font-size: var(--body-size); margin-bottom: 0.3rem;">利用扩展字段承载</p>
+                <p style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.5;">
                     GB 46750-2025 OPID 数据帧预留了扩展字段，认证标签可嵌入现有报文结构，<br>无需修改标准协议。
                 </p>
-                <span class="tag tag-accent" style="margin-top: 0.6rem;">OPID 帧长度 78 字节</span>
+                <span class="tag tag-accent" style="margin-top: 0.4rem;">OPID 帧长度 78 字节</span>
             </div>
-            <div class="card card-accent" style="text-align: center;">
-                <p style="font-weight: 700; font-size: var(--h3-size); margin-bottom: 0.5rem;">1 Hz 实时性可达</p>
-                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+            <div class="card card-accent" style="text-align: center; padding: clamp(0.5rem, 1.2vw, 1rem);">
+                <p style="font-weight: 700; font-size: var(--body-size); margin-bottom: 0.3rem;">1 Hz 实时性可达</p>
+                <p style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.5;">
                     采用离线预计算+在线轻量更新策略，飞行前预生成时间窗凭据，飞行中每秒仅需<br>哈希级轻量计算。
                 </p>
-                <span class="tag tag-accent" style="margin-top: 0.6rem;">广播间隔 800 ms</span>
+                <span class="tag tag-accent" style="margin-top: 0.4rem;">广播间隔 800 ms</span>
             </div>
-            <div class="card card-accent" style="text-align: center;">
-                <p style="font-weight: 700; font-size: var(--h3-size); margin-bottom: 0.5rem;">不改变广播协议</p>
-                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+            <div class="card card-accent" style="text-align: center; padding: clamp(0.5rem, 1.2vw, 1rem);">
+                <p style="font-weight: 700; font-size: var(--body-size); margin-bottom: 0.3rem;">不改变广播协议</p>
+                <p style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.5;">
                     仅替换部分字段内容（从明文身份变为动态标签），不更改<br>Wi-Fi Beacon帧结构和广播频率。
                 </p>
-                <span class="tag tag-accent" style="margin-top: 0.6rem;">完全向下兼容</span>
+                <span class="tag tag-accent" style="margin-top: 0.4rem;">完全向下兼容</span>
             </div>
-            <div class="card card-accent" style="text-align: center;">
-                <p style="font-weight: 700; font-size: var(--h3-size); margin-bottom: 0.5rem;">可追溯不丢监管</p>
-                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+            <div class="card card-accent" style="text-align: center; padding: clamp(0.5rem, 1.2vw, 1rem);">
+                <p style="font-weight: 700; font-size: var(--body-size); margin-bottom: 0.3rem;">可追溯不丢监管</p>
+                <p style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.5;">
                     多授权节点分散持有密钥份额，日常最小披露，异常时<br>联合解封真实身份，满足执法追溯需求。
                 </p>
-                <span class="tag tag-accent" style="margin-top: 0.6rem;">门限恢复机制</span>
+                <span class="tag tag-accent" style="margin-top: 0.4rem;">门限恢复机制</span>
             </div>
         </div>
     </div>
@@ -1010,24 +1010,17 @@ h3 {
 </section>
 
 <!-- Slide 11: Team -->
-<section class="slide" id="s11" style="font-size: 93%;">
-    <div class="slide-content" style="gap: clamp(0.3rem, 1.2vw, 1.2rem);">
+<section class="slide" id="s11">
+    <div class="slide-content" style="gap: var(--content-gap);">
         <div class="section-label reveal">11 · 团队与合作</div>
-        <h2 class="reveal reveal-delay-1">产学研用闭环，五方协同攻关</h2>
+        <h2 class="reveal reveal-delay-1">核心技术方 + 网络基础设施方</h2>
         <div class="divider reveal reveal-delay-2"></div>
-        <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(3, 1fr); max-width: 900px; width: 100%; align-self: center;">
+        <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(2, 1fr); max-width: 650px; width: 100%; align-self: center;">
             <div class="card card-accent" style="text-align: center;">
                 <p style="font-weight: 700; font-size: var(--h3-size);">上海交通大学</p>
                 <p style="color: var(--accent); font-size: var(--small-size); margin-bottom: 0.6rem;">技术核心</p>
                 <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
                     ZKP 算法设计<br>协议安全证明<br>机载端软硬件整合<br>安全芯片方案
-                </p>
-            </div>
-            <div class="card card-warning" style="text-align: center;">
-                <p style="font-weight: 700; font-size: var(--h3-size);">蔚蓝空间</p>
-                <p style="color: var(--accent2); font-size: var(--small-size); margin-bottom: 0.6rem;">产业落地</p>
-                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
-                    行业无人机企业<br>真实飞行场景验证<br>机载设备集成测试<br>产品化需求定义
                 </p>
             </div>
             <div class="card" style="text-align: center; border-left: 3px solid var(--success);">
@@ -1037,33 +1030,13 @@ h3 {
                     网络式识别硬件<br>UOM 平台对接<br>基础威胁场景构建<br>运营商级部署能力
                 </p>
             </div>
-            <div class="card card-accent" style="text-align: center;">
-                <p style="font-weight: 700; font-size: var(--h3-size);">中国传媒大学</p>
-                <p style="color: var(--accent); font-size: var(--small-size); margin-bottom: 0.6rem;">广播硬件</p>
-                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
-                    Wi-Fi 广播模块研发<br>GB 46750-2025 协议栈<br>硬件量产与测试<br>广播性能优化
-                </p>
-            </div>
-            <div class="card card-danger" style="text-align: center;">
-                <p style="font-weight: 700; font-size: var(--h3-size);">公安部二十三局</p>
-                <p style="color: var(--danger); font-size: var(--small-size); margin-bottom: 0.6rem;">统筹协调</p>
-                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
-                    项目整体协调<br>监管需求定义<br>标准推动路径<br>执法场景验证
-                </p>
-            </div>
-            <div class="card card-accent" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
-                <p style="font-weight: 700; font-size: var(--h3-size);">+ 更多</p>
-                <p style="font-size: var(--body-size); color: var(--text-secondary);">
-                    芯片厂商<br>安全评测机构<br>空域管理机构
-                </p>
-            </div>
         </div>
     </div>
 </section>
 
 <!-- Slide 12: Roadmap & Vision -->
-<section class="slide" id="s12">
-    <div class="slide-content" style="gap: clamp(0.3rem, 1.2vw, 1.2rem);">
+<section class="slide" id="s12" style="font-size: 93%;">
+    <div class="slide-content" style="gap: clamp(0.2rem, 0.8vw, 0.8rem); padding: clamp(0.5rem, 2.5vw, 2.5rem);">
         <div class="section-label reveal">12 · 路线图</div>
         <h2 class="reveal reveal-delay-1">从技术验证到标准推动</h2>
         <div class="divider reveal reveal-delay-2"></div>
@@ -1111,7 +1084,7 @@ h3 {
 
 <!-- Slide 13: Closing -->
 <section class="slide" id="s13">
-    <div class="slide-content" style="align-items: center; text-align: center; gap: var(--content-gap);">
+    <div class="slide-content" style="align-items: center; text-align: center; gap: clamp(0.3rem, 1.5vw, 1.5rem); padding: clamp(0.5rem, 3vw, 3rem);">
         <div class="pulse-ring" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
         <h1 class="reveal" style="max-width: 850px;">
             让天空可信，让身份安全
