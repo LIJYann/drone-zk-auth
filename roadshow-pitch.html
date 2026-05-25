@@ -1010,31 +1010,51 @@ h3 {
 </section>
 
 <!-- Slide 11: Team -->
-<section class="slide" id="s11">
-    <div class="slide-content" style="gap: var(--content-gap);">
+<section class="slide" id="s11" style="font-size: 93%;">
+    <div class="slide-content" style="gap: clamp(0.3rem, 1vw, 1rem); padding: clamp(0.5rem, 2vw, 2.5rem);">
         <div class="section-label reveal">11 · 团队与合作</div>
-        <h2 class="reveal reveal-delay-1">产学研用协同攻关</h2>
+        <h2 class="reveal reveal-delay-1">产学研用闭环，五方协同攻关</h2>
         <div class="divider reveal reveal-delay-2"></div>
-        <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(3, 1fr); max-width: 850px; width: 100%; align-self: center;">
-            <div class="card card-accent" style="text-align: center;">
-                <p style="font-weight: 700; font-size: var(--h3-size);">上海交通大学</p>
-                <p style="color: var(--accent); font-size: var(--small-size); margin-bottom: 0.6rem;">技术核心</p>
-                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
-                    ZKP 算法设计<br>协议安全证明<br>机载端软硬件整合<br>安全芯片方案
+        <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(3, 1fr); max-width: 900px; width: 100%; align-self: center;">
+            <div class="card card-accent" style="text-align: center; padding: clamp(0.5rem, 1vw, 1rem);">
+                <p style="font-weight: 700; font-size: var(--body-size);">上海交通大学</p>
+                <p style="color: var(--accent); font-size: var(--small-size); margin-bottom: 0.3rem;">技术核心</p>
+                <p style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">
+                    ZKP 算法设计<br>协议安全证明<br>安全芯片方案
                 </p>
             </div>
-            <div class="card" style="text-align: center; border-left: 3px solid var(--success);">
-                <p style="font-weight: 700; font-size: var(--h3-size);">中国联通</p>
-                <p style="color: var(--success); font-size: var(--small-size); margin-bottom: 0.6rem;">网络基础设施</p>
-                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
-                    网络式识别硬件<br>UOM 平台对接<br>基础威胁场景构建<br>运营商级部署能力
+            <div class="card card-warning" style="text-align: center; padding: clamp(0.5rem, 1vw, 1rem);">
+                <p style="font-weight: 700; font-size: var(--body-size);">蔚蓝空间</p>
+                <p style="color: var(--accent2); font-size: var(--small-size); margin-bottom: 0.3rem;">产业落地</p>
+                <p style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">
+                    行业无人机企业<br>飞行场景验证<br>产品化需求定义
                 </p>
             </div>
-            <div class="card card-danger" style="text-align: center;">
-                <p style="font-weight: 700; font-size: var(--h3-size);">公安部二十三局</p>
-                <p style="color: var(--danger); font-size: var(--small-size); margin-bottom: 0.6rem;">统筹协调</p>
-                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
-                    项目整体协调<br>监管需求定义<br>标准推动路径<br>执法场景验证
+            <div class="card" style="text-align: center; border-left: 3px solid var(--success); padding: clamp(0.5rem, 1vw, 1rem);">
+                <p style="font-weight: 700; font-size: var(--body-size);">中国联通</p>
+                <p style="color: var(--success); font-size: var(--small-size); margin-bottom: 0.3rem;">网络基础设施</p>
+                <p style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">
+                    网络式识别硬件<br>UOM 平台对接<br>运营商级部署
+                </p>
+            </div>
+            <div class="card card-accent" style="text-align: center; padding: clamp(0.5rem, 1vw, 1rem);">
+                <p style="font-weight: 700; font-size: var(--body-size);">中国传媒大学</p>
+                <p style="color: var(--accent); font-size: var(--small-size); margin-bottom: 0.3rem;">广播硬件</p>
+                <p style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">
+                    Wi-Fi 广播模块<br>GB 46750-2025 协议栈<br>硬件量产
+                </p>
+            </div>
+            <div class="card card-danger" style="text-align: center; padding: clamp(0.5rem, 1vw, 1rem);">
+                <p style="font-weight: 700; font-size: var(--body-size);">公安部二十三局</p>
+                <p style="color: var(--danger); font-size: var(--small-size); margin-bottom: 0.3rem;">统筹协调</p>
+                <p style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">
+                    项目整体协调<br>监管需求定义<br>标准推动路径
+                </p>
+            </div>
+            <div class="card" style="text-align: center; display: flex; flex-direction: column; justify-content: center; padding: clamp(0.5rem, 1vw, 1rem); border-left: 3px solid var(--text-muted);">
+                <p style="font-weight: 700; font-size: var(--body-size); color: var(--text-muted);">+ 更多</p>
+                <p style="font-size: var(--small-size); color: var(--text-muted); line-height: 1.4;">
+                    芯片厂商<br>安全评测机构<br>空域管理机构
                 </p>
             </div>
         </div>
