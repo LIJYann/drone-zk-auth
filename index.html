@@ -572,8 +572,9 @@ h3 {
 
     .slide {
         width: 100vw;
-        height: 100vh;
-        overflow: hidden;
+        min-height: 100vh;
+        height: auto;
+        overflow: visible;
         scroll-snap-align: none;
         page-break-after: always;
         page-break-inside: avoid;
@@ -582,6 +583,15 @@ h3 {
 
     .slide:last-child {
         page-break-after: avoid;
+    }
+
+    .slide-content {
+        overflow: visible;
+        max-height: none;
+    }
+
+    .card, .container, .content-box {
+        max-height: none;
     }
 
     .nav-dots, .keyboard-hint, .slide-counter, .bg-mesh {
