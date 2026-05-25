@@ -849,22 +849,28 @@ h3 {
         <div class="section-label reveal">07 · 双模协同</div>
         <h2 class="reveal reveal-delay-1">广播快速筛查 + 网络深度核验</h2>
         <div class="divider reveal reveal-delay-2"></div>
-        <div class="reveal reveal-delay-3" style="max-width: 850px; width: 100%; align-self: center;">
-            <div class="flow-row" style="margin-bottom: var(--content-gap);">
-                <div class="flow-node active">机载端<br>生成动态标签</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-node">Wi-Fi/蓝牙<br>广播标签</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-node active">地面边缘<br>快速筛查 ⚡</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-node" style="border-color: var(--accent2);">异常？</div>
-                <div class="flow-arrow">→</div>
-                <div class="flow-node" style="border-color: var(--danger);">网络平台<br>深度核验 🔍</div>
+        <div class="reveal reveal-delay-3" style="max-width: 900px; width: 100%; align-self: center; display: flex; align-items: center; gap: clamp(0.4rem, 1.5vw, 1rem); margin-bottom: 0;">
+            <div class="card card-accent" style="flex:1; text-align:center; padding: clamp(0.6rem, 1.5vw, 1.2rem);">
+                <div style="font-size: clamp(1.2rem, 2vw, 1.8rem); margin-bottom:0.3rem;">&#x1F6E1;</div>
+                <p style="font-weight:700; font-size:var(--body-size);">机载端生成标签</p>
+                <p style="font-size:var(--small-size); color:var(--text-muted);">安全芯片 · 动态计算<br>飞行前凭据预载</p>
+            </div>
+            <div style="color:var(--accent); font-size:clamp(1.2rem, 2vw, 1.8rem); flex-shrink:0;">&#x27A1;</div>
+            <div class="card" style="flex:1; text-align:center; padding: clamp(0.6rem, 1.5vw, 1.2rem); border-left:3px solid var(--accent2);">
+                <div style="font-size: clamp(1.2rem, 2vw, 1.8rem); margin-bottom:0.3rem;">&#x1F4E1;</div>
+                <p style="font-weight:700; font-size:var(--body-size);">Wi-Fi/蓝牙广播</p>
+                <p style="font-size:var(--small-size); color:var(--text-muted);">OPID Beacon帧<br>每800ms发送</p>
+            </div>
+            <div style="color:var(--accent); font-size:clamp(1.2rem, 2vw, 1.8rem); flex-shrink:0;">&#x27A1;</div>
+            <div class="card" style="flex:1; text-align:center; padding: clamp(0.6rem, 1.5vw, 1.2rem); border-left:3px solid var(--success);">
+                <div style="font-size: clamp(1.2rem, 2vw, 1.8rem); margin-bottom:0.3rem;">&#x1F50D;</div>
+                <p style="font-weight:700; font-size:var(--body-size);">分层验证</p>
+                <p style="font-size:var(--small-size); color:var(--text-muted);">边缘快速筛查<br>异常→网络深度核验</p>
             </div>
         </div>
         <div class="grid reveal reveal-delay-4" style="grid-template-columns: repeat(2, 1fr); max-width: 850px; width: 100%; align-self: center;">
             <div class="card card-accent">
-                <p style="font-weight: 600; margin-bottom: 0.5rem;">📻 广播侧（轻量级）</p>
+                <p style="font-weight: 600; margin-bottom: 0.5rem;">&#x1F4FB; 广播侧（轻量级）</p>
                 <ul class="bullet-list" style="list-style: none; padding: 0; color: var(--text-secondary);">
                     <li>· 报文格式完整性校验</li>
                     <li>· 时间窗有效性检查</li>
@@ -874,7 +880,7 @@ h3 {
                 </ul>
             </div>
             <div class="card" style="border-left: 3px solid var(--accent);">
-                <p style="font-weight: 600; margin-bottom: 0.5rem;">🌐 网络侧（完整验证）</p>
+                <p style="font-weight: 600; margin-bottom: 0.5rem;">&#x1F310; 网络侧（完整验证）</p>
                 <ul class="bullet-list" style="list-style: none; padding: 0; color: var(--text-secondary);">
                     <li>· 完整零知识证明验证</li>
                     <li>· 凭据撤销列表比对</li>
@@ -888,8 +894,8 @@ h3 {
 </section>
 
 <!-- Slide 8: Standards Compatibility -->
-<section class="slide" id="s8">
-    <div class="slide-content" style="gap: var(--content-gap);">
+<section class="slide" id="s8" style="font-size: 95%;">
+    <div class="slide-content" style="gap: clamp(0.3rem, 1.2vw, 1.2rem);">
         <div class="section-label reveal">08 · 标准兼容</div>
         <h2 class="reveal reveal-delay-1">不影响现行国标，无缝嵌入现有框架</h2>
         <div class="divider reveal reveal-delay-2"></div>
@@ -1004,8 +1010,8 @@ h3 {
 </section>
 
 <!-- Slide 11: Team -->
-<section class="slide" id="s11">
-    <div class="slide-content" style="gap: var(--content-gap);">
+<section class="slide" id="s11" style="font-size: 93%;">
+    <div class="slide-content" style="gap: clamp(0.3rem, 1.2vw, 1.2rem);">
         <div class="section-label reveal">11 · 团队与合作</div>
         <h2 class="reveal reveal-delay-1">产学研用闭环，五方协同攻关</h2>
         <div class="divider reveal reveal-delay-2"></div>
@@ -1057,7 +1063,7 @@ h3 {
 
 <!-- Slide 12: Roadmap & Vision -->
 <section class="slide" id="s12">
-    <div class="slide-content" style="gap: var(--content-gap);">
+    <div class="slide-content" style="gap: clamp(0.3rem, 1.2vw, 1.2rem);">
         <div class="section-label reveal">12 · 路线图</div>
         <h2 class="reveal reveal-delay-1">从技术验证到标准推动</h2>
         <div class="divider reveal reveal-delay-2"></div>
