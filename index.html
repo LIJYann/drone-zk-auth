@@ -805,33 +805,34 @@ h3 {
     </div>
 </section>
 
-<!-- Slide 6: Anti-spoofing via Cross-Verification -->
+<!-- Slide 6: Multi-Identity Anti-Spoofing -->
 <section class="slide" id="s6">
     <div class="slide-content" style="gap: var(--content-gap);">
         <div class="section-label reveal">06 · 防套牌机制</div>
-        <h2 class="reveal reveal-delay-1">套牌威胁与广播-网络交叉核验</h2>
+        <h2 class="reveal reveal-delay-1">多身份轮换：让窃取的身份即时失效</h2>
         <div class="divider reveal reveal-delay-2"></div>
         <div class="reveal reveal-delay-3" style="max-width: 850px; width: 100%; align-self: center; display: flex; gap: clamp(0.5rem, 1.5vw, 1.5rem); align-items: stretch;">
-            <div class="card card-danger" style="flex:1; text-align: center;">
-                <p style="font-weight: 700; font-size: var(--h3-size); color: var(--danger); margin-bottom: 0.5rem;">套牌攻击路径</p>
+            <div class="card card-warning" style="flex:1; text-align: center;">
+                <p style="font-weight: 700; font-size: var(--h3-size); color: var(--accent2); margin-bottom: 0.5rem;">传统单身份风险</p>
                 <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
-                    攻击者被动监听广播信道<br>→ 窃取合法飞行器身份<br>→ 复制到非法飞行器<br>→ 伪装身份欺骗附近目标
+                    飞行器仅持有一组固定身份标识<br>→ 被截获后即可无限复制<br>→ 套牌飞行器可长期伪装
                 </p>
-                <span class="tag tag-danger" style="margin-top: 0.6rem;">广播方式最易实现</span>
+                <span class="tag tag-warning" style="margin-top: 0.6rem;">一次截获，永久有效</span>
             </div>
             <div style="display:flex; align-items:center; color:var(--accent); font-size:1.5rem; flex-shrink:0;">→</div>
             <div class="card card-accent" style="flex:1; text-align: center;">
-                <p style="font-weight: 700; font-size: var(--h3-size); color: var(--accent); margin-bottom: 0.5rem;">交叉核验方案</p>
+                <p style="font-weight: 700; font-size: var(--h3-size); color: var(--accent); margin-bottom: 0.5rem;">多身份轮换方案</p>
                 <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
-                    飞行器实时上传收到的广播数据至UOM平台<br>→ UOM比对同身份出现位置<br>→ 检测到同一身份在不同位置同时出现<br>→ 判定并告警套牌行为
+                    飞行器预载多组合法身份凭据<br>→ 每次广播轮换不同身份标识<br>→ 仅飞行器自知当前使用哪组身份<br>→ 攻击者无法预测下一轮播报内容
                 </p>
-                <span class="tag tag-accent" style="margin-top: 0.6rem;">UOM不受广播链路干扰</span>
+                <span class="tag tag-accent" style="margin-top: 0.6rem;">截获即废牌，轮换不重样</span>
             </div>
         </div>
-        <div class="card card-warning reveal reveal-delay-4" style="max-width: 800px; width: 100%; align-self: center; text-align: center;">
-            <p style="font-weight: 600; font-size: var(--body-size); color: var(--accent2);">
-                关键洞察：UOM平台通过4G/5G网络获取飞行数据，<strong style="color: #fff;">不受广播链路干扰</strong>。
-                只要让飞行器将收到的广播数据实时上传，UOM即可通过<strong style="color: #fff;">时空交叉核验</strong>发现套牌。
+        <div class="card reveal reveal-delay-4" style="max-width: 800px; width: 100%; align-self: center; text-align: center; border-left: 3px solid var(--success);">
+            <p style="font-weight: 600; font-size: var(--body-size); color: var(--text-secondary); line-height: 1.7;">
+                核心逻辑：就像公务车辆同时拥有<strong style="color: #fff;">多块车牌</strong>，飞行器在飞行中以自身知晓的规则轮换播报不同身份标识。
+                攻击者即便截获其中一块"车牌"，也无法预测下一个有效的身份是什么，<strong style="color: #fff;">复制的瞬间就已作废</strong>。
+                飞行器不需要外部核验——<strong style="color: var(--accent);">自己知道自己在用哪块"车牌"，即可完成自证</strong>。
             </p>
         </div>
     </div>
