@@ -624,11 +624,11 @@ h3 {
             低空无人飞行器<br>零知识身份认证系统
         </h1>
         <p class="subtitle reveal reveal-delay-2" style="max-width: 650px;">
-            在不影响现行国标的前提下，将明文身份广播<br>升级为零知识动态合法性证明
+            在符合国标的前提下，将敏感信息广播<br>升级为零知识动态合法性证明。
         </p>
         <div class="divider reveal reveal-delay-3" style="margin: var(--content-gap) auto;"></div>
         <p class="reveal reveal-delay-4" style="font-size: var(--small-size); color: var(--text-muted);">
-            2026年5月 &nbsp;|&nbsp; 上海交通大学 &nbsp;|&nbsp; 蔚蓝空间 &nbsp;|&nbsp; 中国联通 &nbsp;|&nbsp; 中国传媒大学
+            2026年5月 &nbsp;|&nbsp; 上海交通大学 &nbsp;|&nbsp; 蔚蓝空间 &nbsp;|&nbsp; 联通智网 &nbsp;|&nbsp; 中国传媒大学
         </p>
     </div>
 </section>
@@ -655,7 +655,7 @@ h3 {
         </div>
         <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: var(--text-secondary); max-width: 800px;">
             GB 46750-2025《民用无人驾驶航空器系统运行识别规范》要求每架无人机在飞行全程中，
-            以不低于每秒1次的频率，通过Wi-Fi/蓝牙公开广播唯一身份标识和运行信息。
+            以不低于每秒1次的频率，通过网络式上报UOM平台，同时通过广播式（Wi-Fi/蓝牙）公开广播唯一身份标识和运行信息。
             这意味着全国每天将产生超过 <strong style="color: var(--accent);">200亿条</strong> 公开广播的身份报文。
         </p>
     </div>
@@ -727,7 +727,7 @@ h3 {
                 <div class="threat-icon">🔍</div>
                 <h3 style="color: var(--accent); margin-bottom: 0.5rem;">长期画像</h3>
                 <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
-                    网络式识别每秒上传明文身份属性，一旦监管平台被攻破，攻击者可关联所有历史数据，形成飞行器全生命周期运行画像。
+                    广播式识别每秒广播明文身份属性，一旦被定点监听，攻击者可关联所有历史数据，形成飞行器全生命周期运行画像。
                 </p>
                 <span class="tag tag-accent" style="margin-top: 0.8rem;">隐私泄露</span>
             </div>
@@ -805,41 +805,35 @@ h3 {
     </div>
 </section>
 
-<!-- Slide 6: Anti-spoofing Triple Binding -->
+<!-- Slide 6: Anti-spoofing via Cross-Verification -->
 <section class="slide" id="s6">
     <div class="slide-content" style="gap: var(--content-gap);">
         <div class="section-label reveal">06 · 防套牌机制</div>
-        <h2 class="reveal reveal-delay-1">三重动态绑定：让复制即时失效</h2>
+        <h2 class="reveal reveal-delay-1">套牌威胁与广播-网络交叉核验</h2>
         <div class="divider reveal reveal-delay-2"></div>
-        <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(3, 1fr); max-width: 900px; width: 100%; align-self: center;">
-            <div class="card card-accent" style="text-align: center;">
-                <div class="num-badge" style="margin: 0 auto 0.8rem;">1</div>
-                <h3 style="margin-bottom: 0.4rem;">时间绑定</h3>
-                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
-                    认证标签仅在短时间窗内有效，过期自动作废。即使标签被截获，在当前时间窗结束后即无法使用。
+        <div class="reveal reveal-delay-3" style="max-width: 850px; width: 100%; align-self: center; display: flex; gap: clamp(0.5rem, 1.5vw, 1.5rem); align-items: stretch;">
+            <div class="card card-danger" style="flex:1; text-align: center;">
+                <p style="font-weight: 700; font-size: var(--h3-size); color: var(--danger); margin-bottom: 0.5rem;">套牌攻击路径</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    攻击者被动监听广播信道<br>→ 窃取合法飞行器身份<br>→ 复制到非法飞行器<br>→ 伪装身份欺骗附近目标
                 </p>
-                <span class="tag tag-accent" style="margin-top: 0.6rem;">窗口有效期 ≤ 数秒</span>
+                <span class="tag tag-danger" style="margin-top: 0.6rem;">广播方式最易实现</span>
             </div>
-            <div class="card card-warning" style="text-align: center;">
-                <div class="num-badge" style="margin: 0 auto 0.8rem; border-color: var(--accent2); color: var(--accent2);">2</div>
-                <h3 style="margin-bottom: 0.4rem;">区域绑定</h3>
-                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
-                    标签与当前空域网格/监管区域编码绑定。在A区域截获的合法标签在B区域重放时会被自动检测为异常。
+            <div style="display:flex; align-items:center; color:var(--accent); font-size:1.5rem; flex-shrink:0;">→</div>
+            <div class="card card-accent" style="flex:1; text-align: center;">
+                <p style="font-weight: 700; font-size: var(--h3-size); color: var(--accent); margin-bottom: 0.5rem;">交叉核验方案</p>
+                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
+                    飞行器实时上传收到的广播数据至UOM平台<br>→ UOM比对同身份出现位置<br>→ 检测到同一身份在不同位置同时出现<br>→ 判定并告警套牌行为
                 </p>
-                <span class="tag tag-warning" style="margin-top: 0.6rem;">空域网格编码</span>
-            </div>
-            <div class="card" style="text-align: center; border-left: 3px solid var(--success);">
-                <div class="num-badge" style="margin: 0 auto 0.8rem; border-color: var(--success); color: var(--success);">3</div>
-                <h3 style="margin-bottom: 0.4rem;">硬件绑定</h3>
-                <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.5;">
-                    证明生成依赖安全芯片/超级SIM中的不可导出密钥。标签无法脱离硬件复制，即使固件被提取也无法伪造。
-                </p>
-                <span class="tag tag-success" style="margin-top: 0.6rem;">安全芯片 · 超级SIM</span>
+                <span class="tag tag-accent" style="margin-top: 0.6rem;">UOM不受广播链路干扰</span>
             </div>
         </div>
-        <p class="reveal reveal-delay-4" style="font-size: var(--body-size); color: var(--text-secondary); text-align: center; max-width: 750px; align-self: center;">
-            三重绑定共同构成<strong style="color: #fff;">"截获即作废，脱硬即失效，异地即告警"</strong>的防套牌体系
-        </p>
+        <div class="card card-warning reveal reveal-delay-4" style="max-width: 800px; width: 100%; align-self: center; text-align: center;">
+            <p style="font-weight: 600; font-size: var(--body-size); color: var(--accent2);">
+                关键洞察：UOM平台通过4G/5G网络获取飞行数据，<strong style="color: #fff;">不受广播链路干扰</strong>。
+                只要让飞行器将收到的广播数据实时上传，UOM即可通过<strong style="color: #fff;">时空交叉核验</strong>发现套牌。
+            </p>
+        </div>
     </div>
 </section>
 
@@ -943,7 +937,7 @@ h3 {
                 <span class="tag tag-success" style="margin-bottom: 0.8rem;">已完成 · V1.0 量产</span>
                 <h3 style="margin-bottom: 0.5rem;">Wi-Fi 广播模块</h3>
                 <p style="font-size: var(--body-size); color: var(--text-secondary); line-height: 1.6;">
-                    中国传媒大学研发，已支持 GB 46750-2025 全字段封装与 Wi-Fi Beacon 广播。
+                    中国传媒大学研发，符合 GB 46750-2025 国标，已实现全字段封装与 Wi-Fi Beacon 广播。
                     发送间隔约 800ms，满足 1 Hz 要求，发射功率 ≥ 13 dBm。
                 </p>
                 <p style="font-size: var(--small-size); color: var(--text-muted); margin-top: 0.6rem;">
@@ -1031,7 +1025,7 @@ h3 {
                 </p>
             </div>
             <div class="card" style="text-align: center; border-left: 3px solid var(--success); padding: clamp(0.5rem, 1vw, 1rem);">
-                <p style="font-weight: 700; font-size: var(--body-size);">中国联通</p>
+                <p style="font-weight: 700; font-size: var(--body-size);">联通智网</p>
                 <p style="color: var(--success); font-size: var(--small-size); margin-bottom: 0.3rem;">网络基础设施</p>
                 <p style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.4;">
                     网络式识别硬件<br>UOM 平台对接<br>运营商级部署
@@ -1123,7 +1117,7 @@ h3 {
         <div class="reveal reveal-delay-3">
             <p style="font-size: var(--body-size); color: var(--text-secondary); margin-bottom: 0.5rem;">合作联系</p>
             <p style="font-size: var(--body-size); color: var(--text-muted);">
-                上海交通大学 &nbsp;·&nbsp; 蔚蓝空间 &nbsp;·&nbsp; 中国联通 &nbsp;·&nbsp; 中国传媒大学
+                上海交通大学 &nbsp;·&nbsp; 蔚蓝空间 &nbsp;·&nbsp; 联通智网 &nbsp;·&nbsp; 中国传媒大学
             </p>
         </div>
         <p class="reveal reveal-delay-4" style="font-size: var(--small-size); color: var(--text-muted); margin-top: var(--content-gap);">
