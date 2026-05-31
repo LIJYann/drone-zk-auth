@@ -657,7 +657,8 @@ h3 {
             GB 46750-2025《民用无人驾驶航空器系统运行识别规范》要求每架无人机在飞行全程中，
             以不低于每秒1次的频率，通过网络式上报UOM平台，同时通过广播式（Wi-Fi/蓝牙）公开广播唯一身份标识和运行信息。
             这意味着全国每天将产生超过 <strong style="color: var(--accent);">200亿条</strong> 公开广播的身份报文。<br>
-            <strong style="color: var(--accent2);">对公务飞行器而言，敏感任务轨迹将完全暴露于公开频段。</strong>
+            <strong style="color: var(--accent2);">对公务飞行器而言，敏感任务轨迹将完全暴露于公开频段。</strong><br>
+            城市可部署<strong style="color: var(--accent);">地面 Wi-Fi/蓝牙监听网络</strong>（楼顶、灯杆），实时接收广播信号并验证合法性——这是地方可以自主建设的安全基础设施。
         </p>
     </div>
 </section>
@@ -796,17 +797,17 @@ h3 {
             <div class="arch-arrow">▼</div>
             <div style="display: flex; gap: clamp(0.3rem, 0.6vw, 0.8rem);">
                 <div class="arch-layer arch-layer-low" style="flex: 1;">
-                    <span style="font-weight: 700; font-size: 0.9em;">③ 广播验证</span>
-                    <span style="font-size: 0.85em; color: var(--text-muted);">快速格式校验<br>时间窗检查<br>轮换合法性检测</span>
+                    <span style="font-weight: 700; font-size: 0.9em;">③ 地面监听网络</span>
+                    <span style="font-size: 0.85em; color: var(--text-muted);">Wi-Fi/BT 监听站<br>快速格式校验<br>轮换合法性检测</span>
                 </div>
                 <div class="arch-layer" style="flex: 1; background: rgba(0,198,255,0.06); border: 1px solid rgba(0,198,255,0.15);">
-                    <span style="font-weight: 700; font-size: 0.9em; color: var(--accent);">④ 网络核验</span>
+                    <span style="font-weight: 700; font-size: 0.9em; color: var(--accent);">④ UOM 平台核验</span>
                     <span style="font-size: 0.85em; color: var(--text-muted);">完整证明验证<br>套牌/重放判定<br>授权身份追溯</span>
                 </div>
             </div>
         </div>
         <p class="reveal reveal-delay-4" style="font-size: var(--small-size); color: var(--text-muted); max-width: 750px; align-self: center;">
-            ①→② 飞行前预载多组合法凭据 → ② 飞行中按自有规则轮换播报 → ③+④ 分层验证
+            ①→② 飞行前预载多组合法凭据 → ② 飞行中按自有规则轮换播报 → ③ 地面监听站快速筛查 → ④ UOM 深度核验
         </p>
     </div>
 </section>
@@ -848,40 +849,43 @@ h3 {
 <section class="slide" id="s7">
     <div class="slide-content" style="gap: var(--content-gap);">
         <div class="section-label reveal">07 · 双模协同</div>
-        <h2 class="reveal reveal-delay-1">双层验证：广播侧轮换筛查 + 网络侧深度兜底</h2>
+        <h2 class="reveal reveal-delay-1">地面监听网络快速筛查 + UOM 平台深度核验</h2>
         <div class="divider reveal reveal-delay-2"></div>
         <div class="reveal reveal-delay-3" style="max-width: 900px; width: 100%; align-self: center; display: flex; align-items: center; gap: clamp(0.4rem, 1.5vw, 1rem); margin-bottom: 0;">
             <div class="card card-accent" style="flex:1; text-align:center; padding: clamp(0.6rem, 1.5vw, 1.2rem);">
                 <div style="font-size: clamp(1.2rem, 2vw, 1.8rem); margin-bottom:0.3rem;">&#x1F6E1;</div>
-                <p style="font-weight:700; font-size:var(--body-size);">机载端生成标签</p>
-                <p style="font-size:var(--small-size); color:var(--text-muted);">安全芯片 · 动态计算<br>飞行前凭据预载</p>
-            </div>
-            <div style="color:var(--accent); font-size:clamp(1.2rem, 2vw, 1.8rem); flex-shrink:0;">&#x27A1;</div>
-            <div class="card" style="flex:1; text-align:center; padding: clamp(0.6rem, 1.5vw, 1.2rem); border-left:3px solid var(--accent2);">
-                <div style="font-size: clamp(1.2rem, 2vw, 1.8rem); margin-bottom:0.3rem;">&#x1F4E1;</div>
-                <p style="font-weight:700; font-size:var(--body-size);">Wi-Fi/蓝牙广播</p>
-                <p style="font-size:var(--small-size); color:var(--text-muted);">OPID Beacon帧<br>每800ms发送</p>
+                <p style="font-weight:700; font-size:var(--body-size);">机载端轮换播报</p>
+                <p style="font-size:var(--small-size); color:var(--text-muted);">多组凭据预载<br>按自有规则轮换发送</p>
             </div>
             <div style="color:var(--accent); font-size:clamp(1.2rem, 2vw, 1.8rem); flex-shrink:0;">&#x27A1;</div>
             <div class="card" style="flex:1; text-align:center; padding: clamp(0.6rem, 1.5vw, 1.2rem); border-left:3px solid var(--success);">
-                <div style="font-size: clamp(1.2rem, 2vw, 1.8rem); margin-bottom:0.3rem;">&#x1F50D;</div>
-                <p style="font-weight:700; font-size:var(--body-size);">分层验证</p>
-                <p style="font-size:var(--small-size); color:var(--text-muted);">边缘快速筛查<br>异常→网络深度核验</p>
+                <div style="font-size: clamp(1.2rem, 2vw, 1.8rem); margin-bottom:0.3rem;">&#x1F3E2;</div>
+                <p style="font-weight:700; font-size:var(--body-size);">地面监听网络</p>
+                <p style="font-size:var(--small-size); color:var(--text-muted);">楼顶/灯杆 Wi-Fi/BT 监听站<br>地方可建设 · 快速筛查</p>
+            </div>
+            <div style="color:var(--accent); font-size:clamp(1.2rem, 2vw, 1.8rem); flex-shrink:0;">&#x27A1;</div>
+            <div class="card" style="flex:1; text-align:center; padding: clamp(0.6rem, 1.5vw, 1.2rem); border-left:3px solid var(--accent);">
+                <div style="font-size: clamp(1.2rem, 2vw, 1.8rem); margin-bottom:0.3rem;">&#x2601;</div>
+                <p style="font-weight:700; font-size:var(--body-size);">UOM 深度核验</p>
+                <p style="font-size:var(--small-size); color:var(--text-muted);">异常推送中央平台<br>完整证明验证+追溯</p>
             </div>
         </div>
+        <div class="reveal reveal-delay-4" style="max-width: 850px; width: 100%; align-self: center; font-size: var(--small-size); color: var(--text-muted); text-align: center; margin-bottom: 0;">
+            另一路径：飞行器接收邻近广播 → 通过 4G 网络上报 UOM → UOM 交叉比对发现套牌
+        </div>
         <div class="grid reveal reveal-delay-4" style="grid-template-columns: repeat(2, 1fr); max-width: 850px; width: 100%; align-self: center;">
-            <div class="card card-accent">
-                <p style="font-weight: 600; margin-bottom: 0.5rem;">&#x1F4FB; 广播侧（轻量级）</p>
+            <div class="card" style="border-left: 3px solid var(--success);">
+                <p style="font-weight: 600; margin-bottom: 0.5rem;">&#x1F3E2; 地面监听网络（地方可建）</p>
                 <ul class="bullet-list" style="list-style: none; padding: 0; color: var(--text-secondary);">
+                    <li>· 楼顶/路灯部署 Wi-Fi/BT 监听站</li>
                     <li>· 报文格式完整性校验</li>
-                    <li>· 时间窗有效性检查</li>
+                    <li>· 轮换标签时间窗检查</li>
                     <li>· 同标签重复出现检测</li>
-                    <li>· 区域一致性比对</li>
-                    <li>· 异常标记上送网络平台</li>
+                    <li>· 异常实时推送 UOM 平台</li>
                 </ul>
             </div>
-            <div class="card" style="border-left: 3px solid var(--accent);">
-                <p style="font-weight: 600; margin-bottom: 0.5rem;">&#x1F310; 网络侧（完整验证）</p>
+            <div class="card card-accent">
+                <p style="font-weight: 600; margin-bottom: 0.5rem;">&#x2601; UOM 平台（中央核验）</p>
                 <ul class="bullet-list" style="list-style: none; padding: 0; color: var(--text-secondary);">
                     <li>· 完整零知识证明验证</li>
                     <li>· 凭据撤销列表比对</li>
@@ -902,11 +906,11 @@ h3 {
         <div class="divider reveal reveal-delay-2"></div>
         <div class="grid reveal reveal-delay-3" style="grid-template-columns: repeat(2, 1fr); max-width: 850px; width: 100%; align-self: center;">
             <div class="card card-accent" style="text-align: center; padding: clamp(0.5rem, 1.2vw, 1rem);">
-                <p style="font-weight: 700; font-size: var(--body-size); margin-bottom: 0.3rem;">利用扩展字段承载</p>
+                <p style="font-weight: 700; font-size: var(--body-size); margin-bottom: 0.3rem;">扩展字段承载 ZK 验证数据</p>
                 <p style="font-size: var(--small-size); color: var(--text-secondary); line-height: 1.5;">
-                    GB 46750-2025 OPID 数据帧预留了扩展字段，认证标签可直接嵌入现有报文结构，<br>完全符合标准协议规范。
+                    GB 46750-2025 OPID 数据帧预留了扩展字段，零知识签名/证明可直接嵌入现有报文结构，<br>完全符合标准协议规范。
                 </p>
-                <span class="tag tag-accent" style="margin-top: 0.4rem;">OPID 帧长度 78 字节</span>
+                <span class="tag tag-accent" style="margin-top: 0.4rem;">OPID 帧 78 字节，扩展字段可用</span>
             </div>
             <div class="card card-accent" style="text-align: center; padding: clamp(0.5rem, 1.2vw, 1rem);">
                 <p style="font-weight: 700; font-size: var(--body-size); margin-bottom: 0.3rem;">1 Hz 实时性可达</p>
